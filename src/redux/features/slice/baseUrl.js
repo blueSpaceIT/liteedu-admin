@@ -3,7 +3,7 @@ import { jwtDecode } from "jwt-decode";
 import { userLoggedIn, userLoggedOut } from "../Api/Auth/AuthSlice";
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: "http://localhost:8000/api/v1",
+    baseUrl: import.meta.env.VITE_API_URL,
     credentials: "include",
     prepareHeaders: (headers, { getState }) => {
         console.log("getState", getState);
