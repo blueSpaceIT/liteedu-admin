@@ -192,7 +192,7 @@ export default function OfflineEnrollmentAdminPage() {
       setLoading(true);
       const dt = paymentForm.paymentDate.length === 16 ? new Date(paymentForm.paymentDate).toISOString() : paymentForm.paymentDate || new Date().toISOString();
       const payload = { enrollmentId: selected._id, payment: { ...paymentForm, amount, paymentDate: dt }, autoGenerateInvoice: !paymentForm.invoiceUrl, sendSMS: !!paymentForm.sendSMS };
-      const res = await fetch('http://localhost:8000/api/v1/offline-student-mangement/add-payment', { method:'POST', headers:{'Content-Type':'application/json', ...authHeaders()}, body: JSON.stringify(payload) });
+      const res = await fetch('https://api.liteedu.com/api/v1/offline-student-mangement/add-payment', { method:'POST', headers:{'Content-Type':'application/json', ...authHeaders()}, body: JSON.stringify(payload) });
       if (!res.ok) throw new Error('Payment failed');
       const updated = attachMonthTo([ (await res.json()).data || {} ])[0];
       setEnrollments(prev => prev.map(p => p._id === updated._id ? updated : p));
