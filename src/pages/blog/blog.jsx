@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import DashboardWrapper from "../../routes/DashboardWrapper";
 import BlogTable from "../../components/blog/BlogTable";
 import { useGetAllBlogsQuery, useGetAllBlogCategoryQuery } from "../../redux/features/api/blog/blogApi";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import AddBlog from "../../components/blog/AddBlog";
 import Pagination from "../../components/pagination";
 
@@ -57,12 +57,12 @@ const Blog = () => {
 
             // category
             if (categoryFilter) {
-                const catId = item.categoryId?._id || (item.categoryId || "");
+                const catId = item.categoryId?._id || item.categoryId || "";
                 if (catId !== categoryFilter) return false;
             }
 
             // status
-            if (statusFilter && ((item.status || "").toLowerCase() !== statusFilter.toLowerCase())) return false;
+            if (statusFilter && (item.status || "").toLowerCase() !== statusFilter.toLowerCase()) return false;
 
             // tags (check any tag includes query)
             if (tagQ) {
@@ -117,7 +117,10 @@ const Blog = () => {
                 setValue={setSearchValue}
                 loading={isLoading}
                 actionElement={
-                    <Button onClick={() => setAddBlog(!addBlog)} size="md">
+                    <Button
+                        onClick={() => setAddBlog(!addBlog)}
+                        size="md"
+                    >
                         Add Blog
                     </Button>
                 }
@@ -129,11 +132,14 @@ const Blog = () => {
                         <select
                             value={categoryFilter}
                             onChange={(e) => setCategoryFilter(e.target.value)}
-                            className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 px-3 py-2 text-sm"
+                            className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                         >
                             <option value="">All Categories</option>
                             {categories.map((c) => (
-                                <option key={c._id} value={c._id}>
+                                <option
+                                    key={c._id}
+                                    value={c._id}
+                                >
                                     {c.title}
                                 </option>
                             ))}
@@ -143,7 +149,7 @@ const Blog = () => {
                         <select
                             value={statusFilter}
                             onChange={(e) => setStatusFilter(e.target.value)}
-                            className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 px-3 py-2 text-sm"
+                            className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                         >
                             <option value="">All Status</option>
                             <option value="Drafted">Drafted</option>
@@ -157,7 +163,7 @@ const Blog = () => {
                             placeholder="Filter by tag"
                             value={tagFilter}
                             onChange={(e) => setTagFilter(e.target.value)}
-                            className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 px-3 py-2 text-sm"
+                            className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                         />
 
                         {/* Date range */}
@@ -167,7 +173,7 @@ const Blog = () => {
                                 type="date"
                                 value={fromDate}
                                 onChange={(e) => setFromDate(e.target.value)}
-                                className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 px-2 py-1 text-sm"
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                             />
                         </div>
                         <div className="flex items-center gap-2">
@@ -176,13 +182,13 @@ const Blog = () => {
                                 type="date"
                                 value={toDate}
                                 onChange={(e) => setToDate(e.target.value)}
-                                className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 px-2 py-1 text-sm"
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                             />
                         </div>
                         {/* Clear */}
                         <button
                             onClick={clearFilters}
-                            className="ml-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 px-3 py-1 text-sm transition-colors"
+                            className="ml-2 rounded-md bg-gray-200 px-3 py-1 text-sm text-gray-800 transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
                         >
                             Clear
                         </button>
@@ -201,11 +207,21 @@ const Blog = () => {
                 ) : error ? (
                     <div className="flex items-center justify-center py-20 font-semibold text-red-500">Error loading blogs</div>
                 ) : filteredBlogs.length === 0 ? (
-                    <div className="flex items-center justify-center py-20 text-lg font-semibold text-gray-500 dark:text-gray-400">No Blog Found 😔</div>
+                    <div className="flex items-center justify-center py-20 text-lg font-semibold text-gray-500 dark:text-gray-400">
+                        No Blog Found 😔
+                    </div>
                 ) : (
                     <>
-                        <BlogTable blogs={paginatedBlogs} currentPage={currentPage} limit={limit} />
-                        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
+                        <BlogTable
+                            blogs={paginatedBlogs}
+                            currentPage={currentPage}
+                            limit={limit}
+                        />
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={handlePageChange}
+                        />
                     </>
                 )}
 
