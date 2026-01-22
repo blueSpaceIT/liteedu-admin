@@ -8,11 +8,11 @@ import { connect } from "react-redux";
 import { ProfileHover } from "../components/profile/profileHover";
 import { userStateToProps } from "../redux/state";
 // import { useAdmingetAllQuery } from "../redux/features/api/admin/adminApi.js";
-import { useAdmingetAllQuery } from "../redux/features/api/admin/adminApi";
 
 import DefaultProfileAvatar from "../../public/default-user-avatar.webp";
 import Logo from "../assets/Logo-01.png"; // <-- put your logo here
 import { cn } from "../utils/cn.js";
+import { useAdminGetAllQuery } from "../redux/features/api/admin/adminApi.js";
 
 const IconBtn = ({ className, children, ...props }) => (
     <button
@@ -44,7 +44,7 @@ const Header = ({ collapsed, setCollapsed, userInfo }) => {
     }, [userInfo]);
 
     // admins
-    const { data: adminResponse, isLoading: adminLoading } = useAdmingetAllQuery();
+    const { data: adminResponse, isLoading: adminLoading } = useAdminGetAllQuery();
     const matchedAdmin = adminResponse?.data?.find((admin) => admin.userId?._id === localUser?._id);
 
     const mergedAdmin = matchedAdmin

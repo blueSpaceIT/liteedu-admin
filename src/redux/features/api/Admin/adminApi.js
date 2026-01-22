@@ -11,7 +11,7 @@ export const adminApi = apiSlice.injectEndpoints({
         }),
 
         // working
-        admingetAll: builder.query({
+        adminGetAll: builder.query({
             query: () => ({
                 url: "/admin",
                 method: "GET",
@@ -29,7 +29,7 @@ export const adminApi = apiSlice.injectEndpoints({
         }),
 
         updateAdmin: builder.mutation({
-            query: ({data ,params}) => ({
+            query: ({ data, params }) => ({
                 url: `/admin/${params.id}`,
                 method: "PATCH",
                 body: data,
@@ -48,4 +48,4 @@ export const adminApi = apiSlice.injectEndpoints({
     overrideExisting: false,
 });
 
-export const { useAdminProfileQuery, useAdmingetAllQuery, useCreateAdminMutation, useUpdateAdminMutation, useDeleteAdminMutation } = adminApi;
+export const { useAdminProfileQuery, useAdminGetAllQuery, useCreateAdminMutation, useUpdateAdminMutation, useDeleteAdminMutation } = adminApi;
