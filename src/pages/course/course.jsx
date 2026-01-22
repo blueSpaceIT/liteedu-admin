@@ -6,7 +6,7 @@ import useFormSubmit from "../../hooks/useFormSubmit";
 import { useCreateCourseMutation, useGetAllCourseQuery, useUpdateCourseMutation } from "../../redux/features/api/course/courseApi";
 import { useGetAllCourseCategoryQuery } from "../../redux/features/api/courseCategory/courseCategory";
 import DashboardWrapper from "../../routes/DashboardWrapper";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 
 const Course = () => {
     const { handleSubmitForm } = useFormSubmit();
