@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useGetAllBookQuery, useGetAllBookCategoryQuery } from "../../redux/features/api/book/bookApi";
 import DashboardWrapper from "../../routes/DashboardWrapper";
 import BookTable from "../../components/book/bookTable";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import AddBookModal from "../../components/book/AddBookModal";
 import Pagination from "../../components/pagination";
 
@@ -82,7 +82,10 @@ const Book = () => {
                 setValue={setSearch}
                 loading={bookLoading}
                 actionElement={
-                    <Button onClick={() => setAddBook(true)} size="md">
+                    <Button
+                        onClick={() => setAddBook(true)}
+                        size="md"
+                    >
                         Add Books
                     </Button>
                 }
@@ -94,11 +97,14 @@ const Book = () => {
                         <select
                             value={categoryFilter}
                             onChange={(e) => setCategoryFilter(e.target.value)}
-                            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-3 py-2 text-sm"
+                            className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                         >
                             <option value="">All Categories</option>
                             {categories.map((cat) => (
-                                <option key={cat._id} value={cat._id}>
+                                <option
+                                    key={cat._id}
+                                    value={cat._id}
+                                >
                                     {cat.name || cat.title}
                                 </option>
                             ))}
@@ -108,7 +114,7 @@ const Book = () => {
                         <select
                             value={statusFilter}
                             onChange={(e) => setStatusFilter(e.target.value)}
-                            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-3 py-2 text-sm"
+                            className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                         >
                             <option value="">All Status</option>
                             <option value="Active">Active</option>
@@ -119,7 +125,7 @@ const Book = () => {
                         <select
                             value={bookTypeFilter}
                             onChange={(e) => setBookTypeFilter(e.target.value)}
-                            className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-3 py-2 text-sm"
+                            className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                         >
                             <option value="">All Types</option>
                             <option value="Ebook">Ebook</option>
@@ -132,14 +138,14 @@ const Book = () => {
                             placeholder="Min Price"
                             value={priceMin}
                             onChange={(e) => setPriceMin(e.target.value)}
-                            className="w-24 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-2 py-2 text-sm"
+                            className="w-24 rounded-md border border-gray-300 bg-white px-2 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                         />
                         <input
                             type="number"
                             placeholder="Max Price"
                             value={priceMax}
                             onChange={(e) => setPriceMax(e.target.value)}
-                            className="w-24 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-2 py-2 text-sm"
+                            className="w-24 rounded-md border border-gray-300 bg-white px-2 py-2 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                         />
 
                         {/* Date range */}
@@ -149,7 +155,7 @@ const Book = () => {
                                 type="date"
                                 value={fromDate}
                                 onChange={(e) => setFromDate(e.target.value)}
-                                className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-2 py-1 text-sm"
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                             />
                         </div>
                         <div className="flex items-center gap-1">
@@ -158,13 +164,13 @@ const Book = () => {
                                 type="date"
                                 value={toDate}
                                 onChange={(e) => setToDate(e.target.value)}
-                                className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-2 py-1 text-sm"
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                             />
                         </div>
                         {/* Clear */}
                         <button
                             onClick={handleClearFilters}
-                            className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 rounded-md px-3 py-1 text-sm"
+                            className="rounded-md bg-gray-200 px-3 py-1 text-sm text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
                         >
                             Clear
                         </button>
@@ -181,11 +187,19 @@ const Book = () => {
                         <div className="h-12 w-12 animate-spin rounded-full border-b-2 border-t-2 border-blue-600"></div>
                     </div>
                 ) : (
-                    <BookTable books={filteredBooks} page={page} limit={limit} />
+                    <BookTable
+                        books={filteredBooks}
+                        page={page}
+                        limit={limit}
+                    />
                 )}
 
                 {!bookLoading && filteredBooks.length > 0 && (
-                    <Pagination currentPage={page} totalPages={totalPages} onPageChange={handlePageChange} />
+                    <Pagination
+                        currentPage={page}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                    />
                 )}
 
                 {addBook && <AddBookModal onClose={() => setAddBook(false)} />}
