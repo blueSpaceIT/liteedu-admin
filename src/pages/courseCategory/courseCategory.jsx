@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import CourseCategoryList from "../../components/courseCategory/courseCategoryList";
 import CreateCourseCategoryModal from "../../components/courseCategory/courseCategoryFrom";
-import DeleteConfirmModal from "../../ui/deleteConfrimModal";
+import DeleteConfirmModal from "../../UI/deleteConfrimModal";
 import {
     useCreateCourseCategoryMutation,
     useDeleteCourseCategoryMutation,
@@ -9,7 +9,7 @@ import {
     useUpdateCourseCategoryMutation,
 } from "../../redux/features/api/courseCategory/courseCategory";
 import useFormSubmit from "../../hooks/useFormSubmit";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import DashboardWrapper from "../../routes/DashboardWrapper";
 
 const CourseCategoryPage = () => {
@@ -33,7 +33,6 @@ const CourseCategoryPage = () => {
     useEffect(() => {
         // keep DashboardWrapper input in sync; it calls setSearchValue via prop
     }, []);
-
 
     const filteredCategories = useMemo(() => {
         if (!categories) return [];
@@ -150,23 +149,42 @@ const CourseCategoryPage = () => {
                 setValue={setSearchValue}
                 loading={listLoading}
                 actionElement={
-                    <Button onClick={handleCreateClick} disabled={createLoading || updateLoading} size="md">
+                    <Button
+                        onClick={handleCreateClick}
+                        disabled={createLoading || updateLoading}
+                        size="md"
+                    >
                         {createLoading || updateLoading ? "Saving..." : "Create Course Category"}
                     </Button>
                 }
             >
                 {/* Filters row */}
                 <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-center gap-2 w-full max-w-3xl">
+                    <div className="flex w-full max-w-3xl items-center gap-2">
                         <div className="flex items-center gap-2">
                             <label className="text-sm text-gray-700 dark:text-gray-300">From:</label>
-                            <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-2 py-1 text-sm" />
+                            <input
+                                type="date"
+                                value={fromDate}
+                                onChange={(e) => setFromDate(e.target.value)}
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-700 dark:bg-gray-800"
+                            />
                         </div>
                         <div className="flex items-center gap-2">
                             <label className="text-sm text-gray-700 dark:text-gray-300">To:</label>
-                            <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-2 py-1 text-sm" />
+                            <input
+                                type="date"
+                                value={toDate}
+                                onChange={(e) => setToDate(e.target.value)}
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-700 dark:bg-gray-800"
+                            />
                         </div>
-                        <button onClick={clearFilters} className="ml-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm px-3 py-1 transition-colors">Clear</button>
+                        <button
+                            onClick={clearFilters}
+                            className="ml-2 rounded-md bg-gray-200 px-3 py-1 text-sm transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                        >
+                            Clear
+                        </button>
                     </div>
                 </div>
 
@@ -179,13 +197,28 @@ const CourseCategoryPage = () => {
                 ) : filteredCategories.length === 0 ? (
                     <div className="flex items-center justify-center py-20 text-lg font-semibold text-gray-500">No Categories Found 😔</div>
                 ) : (
-                    <CourseCategoryList categories={filteredCategories} onEdit={handleEditCategory} onDelete={handleDeleteClick} />
+                    <CourseCategoryList
+                        categories={filteredCategories}
+                        onEdit={handleEditCategory}
+                        onDelete={handleDeleteClick}
+                    />
                 )}
             </DashboardWrapper>
             {isModalOpen && (
-                <CreateCourseCategoryModal isOpen={isModalOpen} onClose={handleModalClose} onCreate={handleAddCategory} initialData={editingCategory} loading={createLoading || updateLoading} />
+                <CreateCourseCategoryModal
+                    isOpen={isModalOpen}
+                    onClose={handleModalClose}
+                    onCreate={handleAddCategory}
+                    initialData={editingCategory}
+                    loading={createLoading || updateLoading}
+                />
             )}
-            <DeleteConfirmModal isOpen={deleteModalOpen} onConfirm={handleDeleteConfirm} onCancel={handleDeleteCancel} message={deleteLoading ? "Deleting..." : `Are you sure you want to delete "${categoryToDelete?.title}"?`} />
+            <DeleteConfirmModal
+                isOpen={deleteModalOpen}
+                onConfirm={handleDeleteConfirm}
+                onCancel={handleDeleteCancel}
+                message={deleteLoading ? "Deleting..." : `Are you sure you want to delete "${categoryToDelete?.title}"?`}
+            />
         </div>
     );
 };
