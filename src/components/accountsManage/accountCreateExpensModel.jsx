@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import FormActionButtons from "../../ui/button/formActionButtons";
+import FormActionButtons from "../../UI/button/formActionButtons";
 import { useCreateExpenseMutation } from "../../redux/features/api/accounts/accountsApi";
 import useFormSubmit from "../../hooks/useFormSubmit";
 
@@ -39,7 +39,7 @@ const AccountCreateExpensModel = ({ isOpen, onClose }) => {
                     category: "",
                     paymentMethod: "",
                 });
-                onClose()
+                onClose();
             },
         });
     };
