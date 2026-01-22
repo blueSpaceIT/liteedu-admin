@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import DashboardWrapper from "../../routes/DashboardWrapper";
 import { useGetAllNewBatchesQuery } from "../../redux/features/api/newBatch/newBatchApi";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import Pagination from "../../components/pagination";
 import BatchTable from "../../components/newBatch/BatchTable";
 import AddNewBatch from "../../components/newBatch/AddNewBatch";
