@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import CustomSectionTable from "../../components/customSection/CustomSectionTable";
 import { useGetAllCustomSectionsQuery } from "../../redux/features/api/customSection/customSection";
 import AddCustomSectionModal from "../../components/customSection/AddCustomSectionModal";
@@ -40,7 +40,7 @@ const CustomSection = () => {
                     isOpen={addModalOpen}
                     onClose={() => setAddModalOpen(false)}
                     onSuccess={() => {
-                        refetch(); 
+                        refetch();
                         setAddModalOpen(false);
                     }}
                 />
