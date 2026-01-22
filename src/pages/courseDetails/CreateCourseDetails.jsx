@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { useUsergetAllQuery } from "../../redux/features/api/user/userApi";
 import { useCreateCourseDetailsMutation, useGetAllCourseDetailsQuery } from "../../redux/features/api/courseDetails/courseDetails";
 import { useGetAllCourseQuery } from "../../redux/features/api/course/courseApi";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 
 const CreateCourseDetailsPage = () => {
     const { slug } = useParams();
