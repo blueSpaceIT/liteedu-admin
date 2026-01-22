@@ -1,5 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
-import { useGetAllEnrollmentQuery, useDeleteEnrollmentMutation } from "../../redux/features/api/newEnrollment/newEnrollment";
+import { useGetAllEnrollmentQuery, useDeleteEnrollmentMutation } from "../../redux/features/api/newEnrollment/newEnrollment.js";
 import { useGetAllCourseQuery } from "../../redux/features/api/course/courseApi";
 import Pagination from "../pagination";
 import EnrollmentForm from "./enrollmentForm";
