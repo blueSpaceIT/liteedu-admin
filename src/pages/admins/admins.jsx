@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import AdminTable from "../../components/admins/adminTable";
 import Pagination from "../../components/pagination";
-import AdminCreateModal from "../../components/admins/AdminCreateModal";
+import AdminCreateModal from "../../components/admins/adminCreateModal";
 import EditAdminModal from "../../components/admins/adminEditModal";
 import AdminDeleteModal from "../../components/admins/adminDeleteModal";
 import { useAdmingetAllQuery } from "../../redux/features/api/Admin/adminApi";
@@ -96,33 +96,43 @@ const Admins = () => {
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <h1 className="text-2xl font-bold dark:text-white">Admins</h1>
 
-                <div className="flex w-full max-w-3xl gap-2 items-center">
+                <div className="flex w-full max-w-3xl items-center gap-2">
                     <input
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         placeholder="Search name, phone or email..."
-                        className="w-full rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                        className="w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:ring-blue-400"
                     />
 
                     <select
                         value={statusFilter}
                         onChange={(e) => setStatusFilter(e.target.value)}
-                        className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm shadow-sm"
+                        className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm dark:border-gray-700 dark:bg-gray-800"
                     >
                         <option value="">All Status</option>
                         {distinctStatuses.map((st) => (
-                            <option key={st} value={st}>{st}</option>
+                            <option
+                                key={st}
+                                value={st}
+                            >
+                                {st}
+                            </option>
                         ))}
                     </select>
 
                     <select
                         value={roleFilter}
                         onChange={(e) => setRoleFilter(e.target.value)}
-                        className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm shadow-sm"
+                        className="rounded-md border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm dark:border-gray-700 dark:bg-gray-800"
                     >
                         <option value="">All Roles</option>
                         {distinctRoles.map((r) => (
-                            <option key={r} value={r}>{r}</option>
+                            <option
+                                key={r}
+                                value={r}
+                            >
+                                {r}
+                            </option>
                         ))}
                     </select>
 
@@ -130,7 +140,7 @@ const Admins = () => {
                         onClick={() => setIsCreateOpen(true)}
                         className="rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white shadow hover:bg-blue-600"
                     >
-                        Create 
+                        Create
                     </button>
                 </div>
             </div>
@@ -138,15 +148,30 @@ const Admins = () => {
             <div className="mb-4 flex items-center gap-3">
                 <div className="flex items-center gap-2">
                     <label className="text-sm">From:</label>
-                    <input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-2 py-1 text-sm" />
+                    <input
+                        type="date"
+                        value={fromDate}
+                        onChange={(e) => setFromDate(e.target.value)}
+                        className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-700 dark:bg-gray-800"
+                    />
                 </div>
 
                 <div className="flex items-center gap-2">
                     <label className="text-sm">To:</label>
-                    <input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-2 py-1 text-sm" />
+                    <input
+                        type="date"
+                        value={toDate}
+                        onChange={(e) => setToDate(e.target.value)}
+                        className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-700 dark:bg-gray-800"
+                    />
                 </div>
 
-                <button onClick={clearFilters} className="ml-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm px-3 py-1 transition-colors">Clear</button>
+                <button
+                    onClick={clearFilters}
+                    className="ml-2 rounded-md bg-gray-200 px-3 py-1 text-sm transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                >
+                    Clear
+                </button>
             </div>
 
             {isLoading ? (
