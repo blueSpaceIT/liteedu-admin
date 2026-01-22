@@ -2,7 +2,7 @@ import { useMemo, useState, useEffect } from "react";
 import { useGetAllEnrollmentQuery, useDeleteEnrollmentMutation } from "../../redux/features/api/newEnrollment/newEnrollment";
 import { useGetAllCourseQuery } from "../../redux/features/api/course/courseApi";
 import Pagination from "../pagination";
-import EnrollmentForm from "./EnrollmentForm";
+import EnrollmentForm from "./enrollmentForm";
 import { toast } from "react-toastify";
 import EnrollmentRow from "./enrollmentRow";
 
