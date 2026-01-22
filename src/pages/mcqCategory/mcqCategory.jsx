@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 
 import { CreateMcqCategoryModal } from "../../components/mcqCategory/mcqCategoryForm";
-import DeleteConfirmModal from "../../ui/deleteConfrimModal";
+import DeleteConfirmModal from "../../UI/deleteConfrimModal";
 import useFormSubmit from "../../hooks/useFormSubmit";
 import {
     useCreateMcqCategoryMutation,
@@ -169,17 +169,22 @@ const McqCategory = () => {
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         placeholder="Search by title or slug..."
-                        className="w-full rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                        className="w-full rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-sm shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:ring-blue-400"
                     />
 
                     <select
                         value={titleFilter}
                         onChange={(e) => setTitleFilter(e.target.value)}
-                        className="rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-3 py-2 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                        className="rounded-md border border-gray-300 bg-gray-50 px-3 py-2 text-sm shadow-sm focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:ring-blue-400"
                     >
                         <option value="">All Titles</option>
                         {distinctTitles.map((t) => (
-                            <option key={t} value={t}>{t}</option>
+                            <option
+                                key={t}
+                                value={t}
+                            >
+                                {t}
+                            </option>
                         ))}
                     </select>
 
@@ -201,7 +206,7 @@ const McqCategory = () => {
                         type="date"
                         value={fromDate}
                         onChange={(e) => setFromDate(e.target.value)}
-                        className="rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-2 py-1 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                        className="rounded-md border border-gray-300 bg-gray-50 px-2 py-1 text-sm focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:ring-blue-400"
                     />
                 </div>
 
@@ -211,11 +216,16 @@ const McqCategory = () => {
                         type="date"
                         value={toDate}
                         onChange={(e) => setToDate(e.target.value)}
-                        className="rounded-md border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-2 py-1 text-sm focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
+                        className="rounded-md border border-gray-300 bg-gray-50 px-2 py-1 text-sm focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:focus:ring-blue-400"
                     />
                 </div>
 
-                <button onClick={clearFilters} className="rounded-md bg-gray-200 dark:bg-gray-700 px-3 py-1 text-sm hover:bg-gray-300 dark:hover:bg-gray-600">Clear</button>
+                <button
+                    onClick={clearFilters}
+                    className="rounded-md bg-gray-200 px-3 py-1 text-sm hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
+                >
+                    Clear
+                </button>
             </div>
 
             {/* Content (list / loading / empty) */}
@@ -238,10 +248,22 @@ const McqCategory = () => {
 
                         {/* Pagination */}
                         <div className="mt-4 flex items-center justify-end gap-3">
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Page {currentPage} of {totalPages}</p>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">
+                                Page {currentPage} of {totalPages}
+                            </p>
                             <div className="flex items-center gap-2">
-                                <button onClick={() => setCurrentPage((p) => Math.max(1, p - 1))} className="rounded px-3 py-1 bg-gray-100 dark:bg-gray-800">Prev</button>
-                                <button onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))} className="rounded px-3 py-1 bg-gray-100 dark:bg-gray-800">Next</button>
+                                <button
+                                    onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
+                                    className="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800"
+                                >
+                                    Prev
+                                </button>
+                                <button
+                                    onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
+                                    className="rounded bg-gray-100 px-3 py-1 dark:bg-gray-800"
+                                >
+                                    Next
+                                </button>
                             </div>
                         </div>
                     </>
