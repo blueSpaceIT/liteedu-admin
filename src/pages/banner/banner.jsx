@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import BannerTable from "../../components/banner/bannerTable";
 import { useGetAllBannerQuery } from "../../redux/features/api/banner/bannerApi";
 import DashboardWrapper from "../../routes/DashboardWrapper";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import BannerCreateModel from "../../components/banner/bannerCreateModel";
 import BannerDeleteModal from "../../components/banner/bannerDeleteModel";
 import BannerUpdateModel from "../../components/banner/bannerUpdateModel";
