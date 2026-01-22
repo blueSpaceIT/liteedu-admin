@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import DashboardWrapper from "../../routes/DashboardWrapper";
 import { useGetAllBlogCategoryQuery } from "../../redux/features/api/blog/blogApi";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import AddBlogCategory from "../../components/blog/AddBlogCategory";
 import BlogCategoryTable from "../../components/blog/BlogCategoryTable";
 import Pagination from "../../components/pagination";
@@ -37,9 +37,7 @@ const BlogCategory = () => {
             const from = fromDate ? new Date(fromDate) : null;
             const to = toDate ? new Date(toDate) : null;
 
-            const matchesDate =
-                (!from || created >= from) &&
-                (!to || created <= new Date(to.setHours(23, 59, 59, 999)));
+            const matchesDate = (!from || created >= from) && (!to || created <= new Date(to.setHours(23, 59, 59, 999)));
 
             return matchesSearch && matchesDate;
         });
@@ -72,7 +70,10 @@ const BlogCategory = () => {
                 setValue={setSearchValue}
                 loading={isLoading}
                 actionElement={
-                    <Button onClick={() => setAddCategory(true)} size="md">
+                    <Button
+                        onClick={() => setAddCategory(true)}
+                        size="md"
+                    >
                         Add Category
                     </Button>
                 }
@@ -87,7 +88,7 @@ const BlogCategory = () => {
                                 type="date"
                                 value={fromDate}
                                 onChange={(e) => setFromDate(e.target.value)}
-                                className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-2 py-1 text-sm"
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                             />
                         </div>
 
@@ -98,7 +99,7 @@ const BlogCategory = () => {
                                 type="date"
                                 value={toDate}
                                 onChange={(e) => setToDate(e.target.value)}
-                                className="border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded-md px-2 py-1 text-sm"
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm text-gray-800 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100"
                             />
                         </div>
 
@@ -108,7 +109,7 @@ const BlogCategory = () => {
                                 type="checkbox"
                                 checked={includeDeleted}
                                 onChange={(e) => setIncludeDeleted(e.target.checked)}
-                                className="w-4 h-4 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 rounded"
+                                className="h-4 w-4 rounded border-gray-300 bg-white dark:border-gray-700 dark:bg-gray-800"
                             />
                             Include Deleted
                         </label>
@@ -116,18 +117,14 @@ const BlogCategory = () => {
                         {/* Clear */}
                         <button
                             onClick={handleClearFilters}
-                            className="bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-100 rounded-md px-3 py-1 text-sm"
+                            className="rounded-md bg-gray-200 px-3 py-1 text-sm text-gray-800 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600"
                         >
                             Clear
                         </button>
                     </div>
 
                     <div className="text-sm text-gray-600 dark:text-gray-400">
-                        Showing{" "}
-                        <span className="font-medium text-gray-800 dark:text-gray-100">
-                            {filteredCategories.length}
-                        </span>{" "}
-                        results
+                        Showing <span className="font-medium text-gray-800 dark:text-gray-100">{filteredCategories.length}</span> results
                     </div>
                 </div>
 
