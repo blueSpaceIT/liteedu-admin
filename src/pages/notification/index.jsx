@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { useGetAllNotificationQuery } from "../../redux/features/api/notification/notification";
 import DashboardWrapper from "../../routes/DashboardWrapper";
 import Pagination from "../../components/pagination";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import AddNotificationModal from "../../components/notification/addNotification";
 import NotificationTable from "../../components/notification/notificationTable";
 

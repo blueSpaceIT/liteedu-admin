@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useCreateEnrollmentMutation, useUpdateEnrollmentMutation } from "../../redux/features/api/newEnrollment/newEnrollment";
 import useFormSubmit from "../../hooks/useFormSubmit";
 import EnrollmentList from "../../components/newEnrollment/entrollmentList";
-import EnrollmentForm from "../../components/newEnrollment/EnrollmentForm";
+import EnrollmentForm from "../../components/newEnrollment/enrollmentForm";
 
 const NewEnrollment = () => {
     const [showForm, setShowForm] = useState(false);
