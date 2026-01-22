@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import UserRow from "./UserRow";
+import UserRow from "./userrow";
 
 const UserTable = ({ users, page, limit }) => {
     return (
