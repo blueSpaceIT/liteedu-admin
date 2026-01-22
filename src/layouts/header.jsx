@@ -11,7 +11,7 @@ import DefaultProfileAvatar from "../../public/default-user-avatar.webp";
 import Logo from "../assets/Logo-01.png";
 import { cn } from "../utils/cn.js";
 // import { useAdminGetAllQuery } from "../redux/features/api/admin/adminApi";
-import { useAdminGetAllQuery } from "@/redux/features/api/admin/adminApi";
+import { useAdminGetAllQuery } from "@/redux/features/api/admin/adminApi.js";
 
 const IconBtn = ({ className, children, ...props }) => (
     <button
