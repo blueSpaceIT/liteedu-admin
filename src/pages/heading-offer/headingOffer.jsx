@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from "react";
 import { useGetAllHeadingOffersQuery } from "../../redux/features/api/headingOffer/headingOfferApi";
 import DashboardWrapper from "../../routes/DashboardWrapper";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import Pagination from "../../components/pagination";
 import HeadingTable from "../../components/Heading/HeadingTable";
 import AddHeadingOfferModal from "../../components/Heading/AddHeadingModal";
