@@ -8,7 +8,7 @@ import {
 } from "../../redux/features/api/book/bookApi";
 import BookCategoryTable from "../../components/book/bookCategoryTable";
 import AddBookCategory from "../../components/book/AddBookCategory";
-import Button from "../../ui/button";
+import Button from "../../UI/button";
 import useFormSubmit from "../../hooks/useFormSubmit";
 import { toast } from "react-toastify";
 import Pagination from "../../components/pagination";
@@ -79,10 +79,7 @@ const BookCategory = () => {
     }, [bookCategories, includeDeleted, fromDate, toDate]);
 
     // pagination computed from filteredCategories (client-side)
-    const totalPages = useMemo(() => Math.max(Math.ceil(filteredCategories.length / limit), 1), [
-        filteredCategories.length,
-        limit,
-    ]);
+    const totalPages = useMemo(() => Math.max(Math.ceil(filteredCategories.length / limit), 1), [filteredCategories.length, limit]);
 
     const paginatedCategories = useMemo(() => {
         const start = (page - 1) * limit;
@@ -208,14 +205,14 @@ const BookCategory = () => {
             >
                 {/* Filters row (client-side filters) */}
                 <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                    <div className="flex items-center gap-2 flex-wrap">
+                    <div className="flex flex-wrap items-center gap-2">
                         <div className="flex items-center gap-2">
                             <label className="text-sm text-gray-700 dark:text-gray-300">From:</label>
                             <input
                                 type="date"
                                 value={fromDate}
                                 onChange={(e) => setFromDate(e.target.value)}
-                                className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-2 py-1 text-sm"
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-700 dark:bg-gray-800"
                             />
                         </div>
 
@@ -225,15 +222,13 @@ const BookCategory = () => {
                                 type="date"
                                 value={toDate}
                                 onChange={(e) => setToDate(e.target.value)}
-                                className="rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-2 py-1 text-sm"
+                                className="rounded-md border border-gray-300 bg-white px-2 py-1 text-sm dark:border-gray-700 dark:bg-gray-800"
                             />
                         </div>
 
-                  
-
                         <button
                             onClick={clearFilters}
-                            className="ml-2 rounded-md bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-sm px-3 py-1 transition-colors"
+                            className="ml-2 rounded-md bg-gray-200 px-3 py-1 text-sm transition-colors hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600"
                         >
                             Clear
                         </button>
@@ -252,7 +247,9 @@ const BookCategory = () => {
                 ) : isError ? (
                     <div className="flex items-center justify-center py-10 text-gray-500 dark:text-gray-400">Failed to load categories.</div>
                 ) : filteredCategories.length === 0 ? (
-                    <div className="flex items-center justify-center py-20 text-lg font-semibold text-gray-500 dark:text-gray-400">No Categories Found 😔</div>
+                    <div className="flex items-center justify-center py-20 text-lg font-semibold text-gray-500 dark:text-gray-400">
+                        No Categories Found 😔
+                    </div>
                 ) : (
                     <>
                         <BookCategoryTable
@@ -264,7 +261,11 @@ const BookCategory = () => {
                         {/* Pagination */}
                         {filteredCategories.length > 0 && (
                             <div className="mt-4">
-                                <Pagination currentPage={page} totalPages={totalPages} onPageChange={handlePageChange} />
+                                <Pagination
+                                    currentPage={page}
+                                    totalPages={totalPages}
+                                    onPageChange={handlePageChange}
+                                />
                             </div>
                         )}
                     </>
