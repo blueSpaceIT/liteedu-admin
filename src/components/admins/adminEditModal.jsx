@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Image, Loader2 } from "lucide-react";
 import FileUpload from "../course/input/fileUpload";
 import { useUploadImageMutation } from "../../redux/features/api/upload/uploadApi";
-import FormActionButtons from "../../ui/button/formActionButtons";
+import FormActionButtons from "../../UI/button/formActionButtons";
 import useFormSubmit from "../../hooks/useFormSubmit";
 import { toast } from "react-toastify";
 import ModalContainer from "../../package/modalContainer";
