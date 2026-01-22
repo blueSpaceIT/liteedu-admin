@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import useFormSubmit from "../../hooks/useFormSubmit";
 import { useDeleteAdminMutation } from "../../redux/features/api/Admin/adminApi";
-import FormActionButtons from "../../ui/button/formActionButtons";
+import FormActionButtons from "../../UI/button/formActionButtons";
 
 const AdminDeleteModal = ({ isOpen, onClose, admin }) => {
     const { handleSubmitForm } = useFormSubmit();
