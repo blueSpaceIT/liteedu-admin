@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { jwtDecode } from "jwt-decode";
-import { userLoggedIn, userLoggedOut } from "../Api/Auth/AuthSlice";
+import { userLoggedIn, userLoggedOut } from "../api/auth/authSlice";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: import.meta.env.VITE_API_URL,
