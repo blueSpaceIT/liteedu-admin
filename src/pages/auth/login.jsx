@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { useLoginMutation } from "../../redux/features/api/auth/AuthApi";
+import { useLoginMutation } from "../../redux/features/api/auth/authApi";
 import { useDispatch } from "react-redux";
-import { userLoggedIn } from "../../redux/features/Api/Auth/AuthSlice";
+import { userLoggedIn } from "../../redux/features/api/auth/authSlice";
 
 const Login = () => {
     const navigate = useNavigate();
