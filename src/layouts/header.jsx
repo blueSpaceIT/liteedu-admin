@@ -8,10 +8,10 @@ import { connect } from "react-redux";
 import { ProfileHover } from "../components/profile/profileHover";
 import { userStateToProps } from "../redux/state";
 import DefaultProfileAvatar from "../../public/default-user-avatar.webp";
-import Logo from "../assets/Logo-01.png"; // <-- put your logo here
+import Logo from "../assets/Logo-01.png";
 import { cn } from "../utils/cn.js";
-import { useAdminGetAllQuery } from "../redux/features/api/admin/adminApi.js";
 // import { useAdminGetAllQuery } from "../redux/features/api/admin/adminApi";
+import { useAdminGetAllQuery } from "@/redux/features/api/admin/adminApi";
 
 const IconBtn = ({ className, children, ...props }) => (
     <button
@@ -30,7 +30,6 @@ const IconBtn = ({ className, children, ...props }) => (
 const Header = ({ collapsed, setCollapsed, userInfo }) => {
     const { theme, setTheme } = useTheme();
     const [showMenu, setShowMenu] = useState(false);
-
     // load user (redux -> localStorage)
     const savedUser = localStorage.getItem("userInfo");
     const [localUser, setLocalUser] = useState(savedUser ? JSON.parse(savedUser) : userInfo || null);
